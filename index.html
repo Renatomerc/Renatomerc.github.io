@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renato Merc – Tehnični nadzor kooperantov</title>
+<meta name="description" content="Zunanji tehnični sodelavec za strojno industrijo. Nadzor kakovosti, terminski plani, koordinacija kooperantov. Maribor in okolica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2332;
+    --navy-mid: #243044;
+    --steel: #3d5a7a;
+    --accent: #c8873a;
+    --accent-light: #f0d9be;
+    --off-white: #f7f5f1;
+    --white: #ffffff;
+    --text: #1a2332;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --border: #e2ddd6;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(200,135,58,0.08) 100%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1.75rem;
+    max-width: 700px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .hero-cta:hover {
+    background: #b37830;
+    transform: translateY(-1px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    max-width: 580px;
+    line-height: 1.75;
+  }
+
+  /* PROBLEM */
+  .problem { background: var(--off-white); }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    margin-top: 3rem;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+  }
+
+  .problem-item {
+    background: var(--white);
+    padding: 2rem 1.75rem;
+  }
+
+  .problem-q {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .problem-a {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .problem-answer {
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--white);
+  }
+
+  .problem-answer p {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  /* STORITVE */
+  .storitve-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    margin-top: 3rem;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .storitev {
+    background: var(--white);
+    padding: 2rem 1.75rem;
+    transition: background 0.2s;
+  }
+
+  .storitev:hover { background: var(--off-white); }
+
+  .storitev-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .storitev h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.65rem;
+    line-height: 1.3;
+  }
+
+  .storitev p {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  /* KAKO DELAMO */
+  .kako { background: var(--navy); }
+
+  .kako .section-title { color: var(--white); }
+  .kako .section-lead { color: rgba(255,255,255,0.6); }
+
+  .kako-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .kako-step {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 1.5rem;
+  }
+
+  .kako-step-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .kako-step h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .kako-step p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  .kako-note {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .kako-note-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    opacity: 0.5;
+  }
+
+  .kako-note p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* O MENI */
+  .omeni { background: var(--off-white); }
+
+  .omeni-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .omeni-photo {
+    aspect-ratio: 3/4;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .omeni-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .omeni-photo svg {
+    opacity: 0.3;
+  }
+
+  .omeni-content {}
+
+  .omeni-quote {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--navy);
+    line-height: 1.5;
+    margin-bottom: 1.75rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--accent);
+  }
+
+  .omeni-text {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .omeni-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .omeni-tag {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    background: var(--white);
+    letter-spacing: 0.03em;
+  }
+
+  /* KONTAKT */
+  .kontakt { background: var(--white); }
+
+  .kontakt-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .kontakt-left {}
+
+  .kontakt-left p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .kontakt-detail {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+  }
+
+  .kontakt-detail svg {
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+
+  .kontakt-detail a {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .kontakt-detail a:hover { color: var(--accent); }
+
+  .kontakt-right {
+    background: var(--off-white);
+    padding: 2.5rem;
+  }
+
+  .kontakt-right h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .kontakt-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .kontakt-list li {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .kontakt-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.04em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 4rem; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    .omeni-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .omeni-photo { aspect-ratio: 4/3; }
+    .kontakt-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Renato Merc</a>
+  <ul class="nav-links">
+    <li><a href="#storitve">Storitve</a></li>
+    <li><a href="#kako">Sodelovanje</a></li>
+    <li><a href="#omeni">O meni</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Zunanji tehnični sodelavec · Maribor</div>
+    <h1>Vaš projekt.<br>Vaši kooperanti.<br><em>Pod nadzorom.</em></h1>
+    <p class="hero-sub">Preverjam kakovost, sledim terminskim planom in koordiniram kooperante — da se vi lahko osredotočite na pridobivanje poslov.</p>
+    <a href="#kontakt" class="hero-cta">Pogovorimo se</a>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Let v strojni industriji</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Let samostojne prakse</div>
+      </div>
+      <div>
+        <div class="stat-num">40h</div>
+        <div class="stat-label">Mesečno na partnerja</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-eyebrow">Poznate to situacijo?</div>
+    <h2 class="section-title">Kooperanti obljubijo.<br>Realnost je pogosto drugačna.</h2>
+    <div class="problem-grid">
+      <div class="problem-item">
+        <p class="problem-q">Kooperant pravi da bo v redu — vi pa niste prepričani.</p>
+        <p class="problem-a">Brez neodvisnega pregleda na terenu nikoli ne veste kje projekt dejansko stoji.</p>
+      </div>
+      <div class="problem-item">
+        <p class="problem-q">Izdelek pride k vam in tolerance niso v skladu z zahtevami.</p>
+        <p class="problem-a">Reklamacija stane čas, denar in zaupanje stranke. Napake je treba ujeti pri viru.</p>
+      </div>
+      <div class="problem-item">
+        <p class="problem-q">Nimate časa sami preverjati vsakega dobavitelja.</p>
+        <p class="problem-a">Vaš čas je preveč dragocen za terenske preglede in administrativno usklajevanje.</p>
+      </div>
+      <div class="problem-item">
+        <p class="problem-q">Ne veste ali je novi kooperant res sposoben za vaš projekt.</p>
+        <p class="problem-a">Certifikati, oprema, ekipa — vse to je treba preveriti preden podpišete pogodbo.</p>
+      </div>
+    </div>
+    <div class="problem-answer">
+      <p>Ravno to rešujem jaz. Brez mačka v žaklju.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORITVE -->
+<section id="storitve">
+  <div class="container">
+    <div class="section-eyebrow">Storitve</div>
+    <h2 class="section-title">Kar potrebujete,<br>preden nastane škoda.</h2>
+    <p class="section-lead">Vsaka storitev je zasnovana tako, da probleme odkrijemo preden pridejo k vam.</p>
+    <div class="storitve-grid">
+      <div class="storitev">
+        <div class="storitev-num">01</div>
+        <h3>Iskanje in ocena kooperantov</h3>
+        <p>Poiščem najustreznejšega kooperanta za vaš projekt glede na tehnične zahteve, kapacitete in lokacijo. Preverim reference, opremo in sistem kakovosti — preden podpišete pogodbo.</p>
+      </div>
+      <div class="storitev">
+        <div class="storitev-num">02</div>
+        <h3>Pridobitev ponudb in pogajanje</h3>
+        <p>Pridobim konkurenčne ponudbe in se pogajam v vašem imenu. Tehnično, jasno in brez nepotrebnih kompromisov na kakovosti.</p>
+      </div>
+      <div class="storitev">
+        <div class="storitev-num">03</div>
+        <h3>Preverjanje certifikatov in skladnosti</h3>
+        <p>Preverim ali ima kooperant vse certifikate, ki jih vaš projekt zahteva — ISO standardi, materiali, postopki površinske obdelave, varjenje in drugo. Neskladnost odkrijemo pred podpisom pogodbe.</p>
+      </div>
+      <div class="storitev">
+        <div class="storitev-num">04</div>
+        <h3>Nadzor kakovosti pri kooperantu</h3>
+        <p>Preverjam tolerance strojne obdelave, antikorozijsko zaščito in postopke površinske obdelave neposredno pri kooperantu — ne šele ko pride k vam.</p>
+      </div>
+      <div class="storitev">
+        <div class="storitev-num">05</div>
+        <h3>Spremljanje terminskih planov</h3>
+        <p>Redno preverjam dejanski napredek proizvodnje in vas pravočasno opozorim na morebitne zamude — da imate čas ukrepati, ne le reagirati.</p>
+      </div>
+      <div class="storitev">
+        <div class="storitev-num">06</div>
+        <h3>Ocena ekipe in delovnega okolja</h3>
+        <p>Najboljša oprema ne pomeni nič brez pravih ljudi. Preverim tudi kako je v podjetju poskrbljeno za zaposlene — motivirani delavci naredijo boljši izdelek in držijo roke.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KAKO DELAMO -->
+<section class="kako" id="kako">
+  <div class="container">
+    <div class="section-eyebrow">Kako sodelujemo</div>
+    <h2 class="section-title">Tekoče partnerstvo,<br>ne enkratni pregled.</h2>
+    <p class="section-lead">Sodelovanje zajema terensko preverjanje, pripravo poročil in redno komunikacijo z vami.</p>
+    <div class="kako-steps">
+      <div class="kako-step">
+        <div class="kako-step-label">Korak 1</div>
+        <h3>Spoznamo se</h3>
+        <p>Pogovorimo se o vašem projektu, kooperantih in konkretnih izzivih. Skupaj določimo obseg sodelovanja.</p>
+      </div>
+      <div class="kako-step">
+        <div class="kako-step-label">Korak 2</div>
+        <h3>Terenska dela</h3>
+        <p>Redno obiskujem kooperante — preverjam kakovost, napredek in pogoje dela. Direktno pri viru.</p>
+      </div>
+      <div class="kako-step">
+        <div class="kako-step-label">Korak 3</div>
+        <h3>Poročanje</h3>
+        <p>Dobite jasna, strukturirana poročila o stanju projekta, ugotovljenih neskladnostih in predlaganih ukrepih.</p>
+      </div>
+      <div class="kako-step">
+        <div class="kako-step-label">Korak 4</div>
+        <h3>Stalna komunikacija</h3>
+        <p>Ste sproti obveščeni. Brez presenečenj, brez čakanja na naslednje poročilo.</p>
+      </div>
+    </div>
+    <div class="kako-note">
+      <svg class="kako-note-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 9v5M10 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Sodelujem z do 4 podjetji hkrati, do 40 ur mesečno na partnerja. To zajema terensko delo, pripravo poročil in komunikacijo z vami — ne le fizičnih obiskov.</p>
+    </div>
+  </div>
+</section>
+
+<!-- O MENI -->
+<section class="omeni" id="omeni">
+  <div class="container">
+    <div class="section-eyebrow">O meni</div>
+    <h2 class="section-title">10 let v praksi,<br>ne na papirju.</h2>
+    <div class="omeni-inner">
+      <div class="omeni-photo">
+        <div class="omeni-photo-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="18" r="10" stroke="#1a2332" stroke-width="1.5"/>
+            <path d="M4 44c0-11 9-18 20-18s20 7 20 18" stroke="#1a2332" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Vaša fotografija</span>
+        </div>
+      </div>
+      <div class="omeni-content">
+        <p class="omeni-quote">Hodil sem to pot sam. Vem kako je, ko nimaš ob sebi izkušenega človeka ki te pravočasno opozori.</p>
+        <p class="omeni-text">Začel sem kot CNC operater in programer na Siemens Sinumerik sistemih. Po desetih letih v strojni industriji sem spoznal proizvodnjo od znotraj — kako nastane izdelek, kje so kritične točke, kdaj kooperant "optimistično" ocenjuje roke.</p>
+        <p class="omeni-text">Nato sem se podal na samostojno pot v lesni industriji, kjer sem se naučil voditi projekte, pogajati, komunicirati z naročniki in iskati kooperante. Naučil sem se tudi kaj se zgodi ko vsega dela ne moreš nositi sam.</p>
+        <p class="omeni-text">Danes to izkušnjo ponujam podjetjem ki ne želijo iti skozi isto. Medtem ko se vi osredotočate na rast — jaz skrbim da vaši kooperanti delajo prav, pravočasno in v skladu z vašimi zahtevami.</p>
+        <div class="omeni-tags">
+          <span class="omeni-tag">CNC operater</span>
+          <span class="omeni-tag">Siemens Sinumerik</span>
+          <span class="omeni-tag">Nadzor kakovosti</span>
+          <span class="omeni-tag">Koordinacija kooperantov</span>
+          <span class="omeni-tag">Lesna industrija</span>
+          <span class="omeni-tag">Terminski plani</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="kontakt" id="kontakt">
+  <div class="container">
+    <div class="section-eyebrow">Kontakt</div>
+    <h2 class="section-title">Pogovorimo se.</h2>
+    <div class="kontakt-inner">
+      <div class="kontakt-left">
+        <p>Vsak projekt je drugačen. Kontaktirajte me in skupaj pogledamo ali in kako vam lahko pomagam.</p>
+        <div class="kontakt-detail">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 4l7 5 7-5M2 4h14v10H2V4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+          </svg>
+          <a href="mailto:renato.merc@gmail.com">renato.merc@gmail.com</a>
+        </div>
+        <div class="kontakt-detail">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 1C6.24 1 4 3.24 4 6c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 6.75a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5z" stroke="currentColor" stroke-width="1.3"/>
+          </svg>
+          <span>Maribor, Slovenija</span>
+        </div>
+      </div>
+      <div class="kontakt-right">
+        <h3>Primerni ste za sodelovanje, če...</h3>
+        <ul class="kontakt-list">
+          <li>Imate projekt z več kooperanti hkrati in nimate kapacitet za lastni nadzor</li>
+          <li>Iščete novega dobavitelja in niste prepričani v njegove kapacitete</li>
+          <li>Ste že imeli slabo izkušnjo z zamudami ali kakovostjo</li>
+          <li>Ste manjše ali srednje podjetje brez lastnega QC oddelka za terenske preglede</li>
+          <li>Hočete jasno sliko stanja — brez presenečenj ob dobavi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Renato Merc · Tehnični nadzor in koordinacija kooperantov · Maribor</p>
+</footer>
+
+</body>
+</html>
