@@ -311,6 +311,89 @@
     line-height: 1.65;
   }
 
+  .storitev-opcija {
+    border-top: 2px solid var(--accent-light);
+    position: relative;
+  }
+
+  .storitev-num-opcija {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  /* DOKUMENTACIJA */
+  .dokumentacija { background: var(--off-white); }
+
+  .dok-intro {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 3rem;
+  }
+
+  .dok-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .dok-group {
+    background: var(--white);
+    padding: 1.75rem;
+  }
+
+  .dok-group-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .dok-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .dok-list li {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .dok-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border);
+    font-size: 0.75rem;
+  }
+
+  .dok-note {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 2px solid var(--accent);
+    background: var(--white);
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
   /* KAKO DELAMO */
   .kako { background: var(--navy); }
 
@@ -554,6 +637,7 @@
   <a href="#" class="nav-logo">Renato Merc</a>
   <ul class="nav-links">
     <li><a href="#storitve">Storitve</a></li>
+    <li><a href="#dokumentacija">Dokumentacija</a></li>
     <li><a href="#kako">Sodelovanje</a></li>
     <li><a href="#omeni">O meni</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
@@ -622,34 +706,88 @@
     <div class="storitve-grid">
       <div class="storitev">
         <div class="storitev-num">01</div>
-        <h3>Iskanje in ocena kooperantov</h3>
-        <p>Poiščem najustreznejšega kooperanta za vaš projekt glede na tehnične zahteve, kapacitete in lokacijo. Preverim reference, opremo in sistem kakovosti — preden podpišete pogodbo.</p>
+        <h3>Nadzor kakovosti pri kooperantu</h3>
+        <p>Preverjam tolerance strojne obdelave, antikorozijsko zaščito in postopke površinske obdelave neposredno pri kooperantu — ne šele ko pride k vam. Napake ujamemo pri viru.</p>
       </div>
       <div class="storitev">
         <div class="storitev-num">02</div>
-        <h3>Pridobitev ponudb in pogajanje</h3>
-        <p>Pridobim konkurenčne ponudbe in se pogajam v vašem imenu. Tehnično, jasno in brez nepotrebnih kompromisov na kakovosti.</p>
+        <h3>Spoštovanje postopkov dela</h3>
+        <p>Preverim ali kooperant sledi predpisanim tehnološkim postopkom — od priprave materiala do končne obdelave. Pravilni postopki so pogoj za kakovost, ne zgolj priporočilo.</p>
       </div>
       <div class="storitev">
         <div class="storitev-num">03</div>
-        <h3>Preverjanje certifikatov in skladnosti</h3>
-        <p>Preverim ali ima kooperant vse certifikate, ki jih vaš projekt zahteva — ISO standardi, materiali, postopki površinske obdelave, varjenje in drugo. Neskladnost odkrijemo pred podpisom pogodbe.</p>
-      </div>
-      <div class="storitev">
-        <div class="storitev-num">04</div>
-        <h3>Nadzor kakovosti pri kooperantu</h3>
-        <p>Preverjam tolerance strojne obdelave, antikorozijsko zaščito in postopke površinske obdelave neposredno pri kooperantu — ne šele ko pride k vam.</p>
-      </div>
-      <div class="storitev">
-        <div class="storitev-num">05</div>
         <h3>Spremljanje terminskih planov</h3>
         <p>Redno preverjam dejanski napredek proizvodnje in vas pravočasno opozorim na morebitne zamude — da imate čas ukrepati, ne le reagirati.</p>
       </div>
       <div class="storitev">
-        <div class="storitev-num">06</div>
+        <div class="storitev-num">04</div>
+        <h3>Preverjanje certifikatov in skladnosti</h3>
+        <p>Preverim ali ima kooperant vse certifikate, ki jih vaš projekt zahteva — ISO standardi, materiali, postopki površinske obdelave, varjenje in drugo. Neskladnost odkrijemo pred podpisom pogodbe.</p>
+      </div>
+      <div class="storitev">
+        <div class="storitev-num">05</div>
         <h3>Ocena ekipe in delovnega okolja</h3>
         <p>Najboljša oprema ne pomeni nič brez pravih ljudi. Preverim tudi kako je v podjetju poskrbljeno za zaposlene — motivirani delavci naredijo boljši izdelek in držijo roke.</p>
       </div>
+      <div class="storitev storitev-opcija">
+        <div class="storitev-num-opcija">Opcijsko</div>
+        <h3>Iskanje kooperantov in pogajanje</h3>
+        <p>Na vaše povpraševanje poiščem ustreznega kooperanta, pridobim ponudbe in se pogajam v vašem imenu. Storitev je na voljo kot dodatek k osnovnemu nadzoru.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOKUMENTACIJA -->
+<section class="dokumentacija" id="dokumentacija">
+  <div class="container">
+    <div class="section-eyebrow">Kaj potrebujem od vas</div>
+    <h2 class="section-title">Tehnična dokumentacija<br>za učinkovit nadzor.</h2>
+    <p class="dok-intro">Da lahko opravim kakovosten nadzor, potrebujem natančno tehnično dokumentacijo za vsak sklop ali pozicijo s katerim želite sodelovanja. Brez tega dela ni mogoče objektivno presoditi ali je izdelek ustrezen.</p>
+    <div class="dok-grid">
+      <div class="dok-group">
+        <div class="dok-group-title">Tehnične risbe in mere</div>
+        <ul class="dok-list">
+          <li>Tehnične risbe z vsemi kotami in tolerancami</li>
+          <li>Pozicije in tolerance vstavljenih puš</li>
+          <li>Zahtevana hrapavost površin (Ra vrednosti)</li>
+          <li>Geometrijske tolerance (ravnost, okroglost, vzporednost)</li>
+          <li>Sestavljalni načrti kjer je relevantno</li>
+        </ul>
+      </div>
+      <div class="dok-group">
+        <div class="dok-group-title">Površinska obdelava in zaščita</div>
+        <ul class="dok-list">
+          <li>Predpisana debelina nanosa barve ali premaza</li>
+          <li>Zahtevani postopek antikorozijske zaščite</li>
+          <li>Standardy površinske priprave (npr. Sa 2.5)</li>
+          <li>Tip in razred premaza (epoksi, poliuretan, cink…)</li>
+          <li>Dovoljene tolerance debeline suhofilmskega sloja</li>
+        </ul>
+      </div>
+      <div class="dok-group">
+        <div class="dok-group-title">Materiali in certifikati</div>
+        <ul class="dok-list">
+          <li>Specifikacija materiala z oznako (npr. S355, 1.4301)</li>
+          <li>Zahtevani certifikati materiala (3.1, 3.2)</li>
+          <li>Zahtevani ISO standardi ali interni standardi</li>
+          <li>Certifikati postopkov varjenja kjer je relevantno</li>
+          <li>Posebne zahteve specifičnega projekta ali naročnika</li>
+        </ul>
+      </div>
+      <div class="dok-group">
+        <div class="dok-group-title">Terminski plan in projekt</div>
+        <ul class="dok-list">
+          <li>Terminski plan s ključnimi mejniki</li>
+          <li>Prioritetni sklopi ali kritične pozicije</li>
+          <li>Kontaktna oseba pri kooperantu</li>
+          <li>Obseg naročila in količine</li>
+          <li>Rok dobave in morebitne fazne dobave</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dok-note">
+      Dokumentacija ni potrebna v celoti ob prvem stiku — skupaj določimo kaj je ključno za vaš specifičen projekt. Že pri prvem pogovoru vam povem kaj točno potrebujem.
     </div>
   </div>
 </section>
